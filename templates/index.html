@@ -1,0 +1,81 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Malware Detection</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='assets/favicon.ico') }}">
+    <!-- Bootstrap CSS-->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center my-4">Malware Detection</h1>
+        <div class="row mt-5">
+            <div class="col-lg-6 mx-auto">
+                <h2 class="text-center">Image Upload</h2>
+                <form method="post" enctype="multipart/form-data" action="/upload_file" class="mx-auto">
+                    <div class="form-group">
+                        <label for="file">Choose an executable file</label>
+                        <input type="file" class="form-control-file" id="file" name="file" accept="image/*" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+                {% if result %}
+                    <div class="result mt-3">
+                        <p>{{ result }}</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-lg-6 mx-auto">
+                <h2 class="text-center">Executable Upload</h2>
+                <form method="post" enctype="multipart/form-data" action="/upload_signature" class="mx-auto">
+                    <div class="form-group">
+                        <label for="file">Choose an executable file</label>
+                        <input type="file" class="form-control-file" id="file" name="file" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+                {% if result %}
+                <div class="result mt-3">
+                    <p>{{ result }}</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <!-- Add this to your base template or where you want flash messages to appear -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+  <ul class=flashes>
+  {% for category, message in messages %}
+    <li class="{{ category }}">{{ message }}</li>
+  {% endfor %}
+  </ul>
+{% endif %}
+{% endwith %}
+    <!-- Bootstrap core JS-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,10 @@
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./app:/app  # Mount the app directory to /app in the container
+    environment:
+      FLASK_APP: app.py  # Set the Flask app entry point
+      FLASK_ENV: development  # Set the environment to development
